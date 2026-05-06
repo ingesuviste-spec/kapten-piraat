@@ -153,6 +153,9 @@ function go(ex, ey){
     // Vaata edetabelit nupp
     var lx=W/2-75, ly=H/2+124, lw=150, lh=28;
     if(ex>=lx&&ex<=lx+lw&&ey>=ly&&ey<=ly+lh){
+      // Show loading in leaderboard div immediately
+      document.getElementById('lbList').innerHTML='<div style="text-align:center;color:#aaa;padding:20px 0;">⏳ Laen edetabelit...</div>';
+      lbDiv.style.display='flex';
       fetchLeaderboard(function(scores){showLeaderboard(scores);});
       return;
     }
@@ -614,7 +617,7 @@ function frame(){
     overlay('⚓ Kapten Piraat','','','Alusta!');
   } else {
     parrot(bird.x,bird.y,bird.vy,bird.f);hud();
-    if(S==='dead')overlay('Arrgghh! Uppusite!','Skoor: '+lastScore+'   Rekord: '+best,'Pakke püüdes +2 punkti!','Mängi uuesti!');
+    if(S==='dead')overlay('Arrgghh! Uppusite!','Skoor: '+lastScore,'','Mängi uuesti!');
   }
   requestAnimationFrame(frame);
 }
